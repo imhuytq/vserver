@@ -15,4 +15,4 @@ RUN poetry install --no-root --only main
 
 COPY ./vserver /app
 
-CMD ["uvicorn", "vserver.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["bash", "/app/bin/start.sh"]

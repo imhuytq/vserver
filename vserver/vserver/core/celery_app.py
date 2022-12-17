@@ -1,6 +1,8 @@
 from celery import Celery
 
-BROKER_URL = "redis://127.0.0.1:6379/0"
+from vserver.config import config
+
+BROKER_URL = "redis://{}:{}".format(config.REDIS_HOST, config.REDIS_PORT)
 celery_app = Celery("worker", broker=BROKER_URL)
 
 celery_app.conf.task_routes = {

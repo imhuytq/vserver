@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     DB_DATABASE: str
     DATABASE_DSN: Optional[PostgresDsn] = None
 
+    REDIS_HOST: str = "127.0.0.1"
+    REDIS_PORT: int = 6379
+
     @validator("DATABASE_DSN", pre=True)
     def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
         if isinstance(v, str):
